@@ -4,7 +4,7 @@ import polars as pl
 #Data
 @st.cache_data
 def get_raw_data():
-    salesdata = pl.read_excel("Coffee Shop Sales.xlsx")
+    salesdata = pl.read_excel("Coffee Shop Sales.xlsx", schema_overrides={"transaction_date": pl.String,"transaction_time": pl.String})
 
     return salesdata
 
