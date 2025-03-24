@@ -48,7 +48,7 @@ with st.popover("Date & Time Conversion", use_container_width=True):
     st.write(convdata.schema)
 
     
-st.write("We can then combine the two converted columns into one datetime column")
+st.write("We can then combine the two converted columns into one datetime column. This will reduce the size and complexity of the dataframe while retaining all relevant data in a format we can be sure is machine readable")
 with st.popover("Column Combination", use_container_width=True):
     st.write("Code:")
     st.code('''datetimeframe = converted_data.select(pl.col("transaction_id"), 
@@ -62,7 +62,7 @@ with st.popover("Column Combination", use_container_width=True):
     st.write("Combined Schema:")
     st.write(datetimeframe.schema)
 
-st.write("We can also calculate our transaction value.")
+st.write("We can also calculate and save our transaction value now to simplify later aggregation.")
 with st.popover("Transaction Value", use_container_width=True):
     st.write("Code:")
     st.code('''cleanframe = datetimeframe.with_columns((pl.col("transaction_qty") * pl.col("unit_price")).alias("transaction_value"))''')
