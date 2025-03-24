@@ -37,7 +37,7 @@ st.write("We can see that the transaction_date and transaction_time fields have 
 
 with st.popover("Date & Time Conversion", use_container_width=True):
     st.write("Code:")
-    st.code('''converted_dataframe = raw_dataframe.with_columns(pl.col("transaction_date").str.to_date("%m-%d-%y"), 
+    st.code('''converted_dataframe = raw_dataframe.with_columns(pl.col("transaction_date").str.to_date("%Y-%m-%d %H:%M:%S"), 
                                                 pl.col("transaction_time").str.to_time("%H:%M"))''')
     convdata = displaydata.with_columns(pl.col("transaction_date").str.to_date("%m-%d-%y"),
                                     pl.col("transaction_time").str.to_time("%H:%M"))
