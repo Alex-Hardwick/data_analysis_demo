@@ -5,6 +5,7 @@ import polars as pl
 @st.cache_data
 def get_raw_data():
     salesdata = pl.read_excel("Coffee Shop Sales.xlsx", schema_overrides={"transaction_date": pl.String,"transaction_time": pl.String})
+    # Date columns overwritten to string data type to demo datetime manipulation
 
     return salesdata
 
@@ -38,7 +39,7 @@ st.write("We can see that the transaction_date and transaction_time fields have 
 with st.popover("Date & Time Conversion", use_container_width=True):
     st.write("Code:")
     st.code('''converted_dataframe = raw_dataframe.with_columns(pl.col("transaction_date").str.to_date("%Y-%m-%d %H:%M:%S"), 
-                                                pl.col("transaction_time").str.to_time("%H:%M"))''')
+                                                pl.col("transaction_time").str.to_time("%Y-%m-%d %H:%M:%S"))''')
     convdata = displaydata.with_columns(pl.col("transaction_date").str.to_date("%Y-%m-%d %H:%M:%S"),
                                     pl.col("transaction_time").str.to_time("%Y-%m-%d %H:%M:%S"))
     st.write("New Frame Head:")
