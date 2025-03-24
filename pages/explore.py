@@ -39,7 +39,7 @@ with st.popover("Date & Time Conversion", use_container_width=True):
     st.write("Code:")
     st.code('''converted_dataframe = raw_dataframe.with_columns(pl.col("transaction_date").str.to_date("%Y-%m-%d %H:%M:%S"), 
                                                 pl.col("transaction_time").str.to_time("%H:%M"))''')
-    convdata = displaydata.with_columns(pl.col("transaction_date").str.to_date("%m-%d-%y"),
+    convdata = displaydata.with_columns(pl.col("transaction_date").str.to_date("%m-%d-%y %H:%M:%S"),
                                     pl.col("transaction_time").str.to_time("%H:%M"))
     st.write("New Frame Head:")
     st.dataframe(convdata.head(), hide_index=True, use_container_width=True)
