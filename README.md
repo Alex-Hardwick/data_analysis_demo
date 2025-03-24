@@ -1,1 +1,1 @@
-# Repository for my data analysis demo using polars and streamlit
+# Data analysis demo using polars and streamlit
